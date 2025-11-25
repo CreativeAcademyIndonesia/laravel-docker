@@ -1,8 +1,8 @@
 FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
-    zip unzip git curl libicu-dev \
-    && docker-php-ext-install pdo pdo_mysql mbstring intl
+    zip unzip git curl libicu-dev libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql mbstring intl zip
 
 FROM composer:2 AS composer_stage
 
