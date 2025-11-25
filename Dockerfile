@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-fpm AS base
 
 RUN apt-get update && apt-get install -y \
     zip unzip git curl libicu-dev libzip-dev \
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 FROM composer:2 AS composer_stage
 
-FROM php:8.2-fpm
+FROM base
 
 COPY --from=composer_stage /usr/bin/composer /usr/bin/composer
 
