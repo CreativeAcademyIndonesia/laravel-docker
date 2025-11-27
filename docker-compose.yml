@@ -8,13 +8,9 @@ services:
         container_name: laravel_app
         restart: unless-stopped
         working_dir: /var/www/html
-        # Binding hanya storage dan cache (BEST PRACTICE)
         volumes:
             - ./storage:/var/www/html/storage
             - ./bootstrap/cache:/var/www/html/bootstrap/cache
-        environment:
-            APP_ENV: production
-            APP_DEBUG: "false"
         networks:
             - laravel
 
@@ -38,9 +34,9 @@ services:
         container_name: laravel_db
         restart: unless-stopped
         environment:
-            MARIADB_DATABASE: laravel_docker
-            MARIADB_USER: laravel_user
-            MARIADB_PASSWORD: supersecret12345
+            MARIADB_DATABASE: laravel
+            MARIADB_USER: user
+            MARIADB_PASSWORD: password123
             MARIADB_ROOT_PASSWORD: root123
         command: --default-authentication-plugin=mysql_native_password
         volumes:
